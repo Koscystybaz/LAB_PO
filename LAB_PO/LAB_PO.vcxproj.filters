@@ -35,5 +35,8 @@
     <None Include="Model.json">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Model2.json">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

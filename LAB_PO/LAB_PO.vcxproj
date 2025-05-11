@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Model.json" />
+    <None Include="Model2.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
