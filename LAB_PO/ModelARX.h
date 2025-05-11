@@ -54,8 +54,16 @@ public:
 	/**
 	* @brief Funkcja deserializuj¹ca model ARX z pliku JSON
 	* @param path Œcie¿ka do pliku JSON, z którego zostan¹ odczytane dane modelu
+	* @return Obiekt modelu ARX
 	*/
 	ModelARX Deserialise(const std::string& path);
+
+	/**
+	* @brief Funkcja zwracaj¹ca ostatni¹ wartoœæ wejœciow¹
+	* @return Ostatnia wartoœæ wejœciowa
+	*/
+	double GetLastInput() const;
+
 
 private:
 	std::vector<double> a;

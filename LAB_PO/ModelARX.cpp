@@ -65,3 +65,8 @@ ModelARX ModelARX::Deserialise(const std::string& path)
 
 	return ModelARX(a, b, k, noise);
 }
+
+double ModelARX::GetLastInput() const
+{
+	return in.back();
+}
