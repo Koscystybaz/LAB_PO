@@ -141,6 +141,7 @@
     <ClInclude Include="RegulatorPID.h" />
     <ClInclude Include="SaturationDecorator.h" />
     <ClInclude Include="Signal.h" />
+    <ClInclude Include="SignalFactory.h" />
     <ClInclude Include="Sine.h" />
     <ClInclude Include="Square.h" />
     <ClInclude Include="Triangle.h" />
@@ -158,6 +159,7 @@
     <ClCompile Include="lab2.cpp" />
     <ClCompile Include="Constant.cpp" />
     <ClCompile Include="SaturationDecorator.cpp" />
+    <ClCompile Include="SignalFactory.cpp" />
     <ClCompile Include="Sine.cpp" />
     <ClCompile Include="Square.cpp" />
     <ClCompile Include="Triangle.cpp" />

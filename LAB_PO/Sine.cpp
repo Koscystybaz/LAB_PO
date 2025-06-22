@@ -8,32 +8,16 @@ Sine::Sine(double amplitude, double frequency)
 
 double Sine::Symuluj(int t) 
 {
-	return amplitude * sin(2 * M_PI * frequency * t);
+	return this->amplitude * sin(2 * M_PI * this->frequency * t);
 }
 
-void Sine::Serialize(const std::string& path) const
+nlohmann::json Sine::Serialize() const
 {
-	nlohmann::json json;
-	json["Type"] = "Sine";
-	json["Amplitude"] = this->amplitude;
-	json["Frequency"] = this->frequency;
-
-	std::ofstream file(path);
-	if (!file) throw std::runtime_error("Nie mo¿na otworzyæ pliku do zapisu");
-	file << json.dump(4);
-	file.close();
+	return { {"Type", "Sine"}, {"Amplitude", this->amplitude}, {"Frequency", this->frequency} };
 }
 
-void Sine::Deserialize(const std::string& path)
+void Sine::Deserialize(const nlohmann::json& json)
 {
-	std::ifstream file(path);
-	if (!file) throw std::runtime_error("Nie mo¿na otworzyæ pliku do odczytu");
-
-	nlohmann::json json;
-	file >> json;
-	if (json["Type"] != "Sine")
-		throw std::runtime_error("Nieprawid³owy typ sygna³u");
-	this->amplitude = json["Amplitude"].get<double>();
-	this->frequency = json["Frequency"].get<double>();
-	file.close();
+	this->amplitude = json.at("Amplitude").get<double>();
+	this->frequency = json.at("Frequency").get<double>();
 }

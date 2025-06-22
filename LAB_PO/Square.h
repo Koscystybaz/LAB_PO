@@ -1,14 +1,20 @@
 #pragma once
 #include "Signal.h"
-#include "ISerializable.h"
+
 /**
  * @brief Definicja klasy Square
  * Klasa ta reprezentuje sygna³ prostok¹tny dziedzicz¹ca po klasie Signal.
  * Zawiera implementacjê funkcji Symuluj, która oblicza wartoœæ sygna³u prostok¹tnego w danym czasie.
  */
-class Square : public Signal, public ISerializable
+class Square : public Signal
 {
 public:
+
+	/**
+	 * @brief Konstruktor domyœlny klasy Square
+	 */
+	Square() = default;
+
 	/**
 	 * @brief Konstruktor klasy Square
 	 * @param amplitude Amplituda sygna³u prostok¹tnego
@@ -23,16 +29,16 @@ public:
 	double Symuluj(int t) override;
 
 	/**
-	 * @brief Funkcja serializuj¹ca obiekt do pliku JSON
-	 * @param path Œcie¿ka do pliku, do którego zostan¹ zapisane dane obiektu
-	 */
-	void Serialize(const std::string& path) const override;
+	* @brief Funkcja serializuj¹ca obiekt do pliku
+	* @return Zwraca obiekt JSON reprezentuj¹cy stan obiektu
+	*/
+	nlohmann::json Serialize() const override;
 
 	/**
-	 * @brief Funkcja deserializuj¹ca obiekt z pliku JSON
-	 * @param path Œcie¿ka do pliku, z którego zostan¹ odczytane dane obiektu
-	 */
-	void  Deserialize(const std::string& path) override;
+	* @brief Funkcja deserializuj¹ca obiekt z pliku
+	* @param json Obiekt JSON zawieraj¹cy dane do deserializacji
+	*/
+	void Deserialize(const nlohmann::json& json) override;
 
 
 private:

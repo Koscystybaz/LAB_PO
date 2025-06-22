@@ -1,0 +1,25 @@
+{
+    "Component": {
+        "Component1": {
+            "Component1": {
+                "Amplitude": 1.0,
+                "Frequency": 20.0,
+                "Type": "Sine"
+            },
+            "Component2": {
+                "Amplitude": 0.5,
+                "Fill": 0.3,
+                "Frequency": 10.0,
+                "Type": "Square"
+            },
+            "Type": "AddDecorator"
+        },
+        "Component2": {
+            "Amplitude": 0.2,
+            "Type": "WhiteNoise"
+        },
+        "Type": "AddDecorator"
+    },
+    "MaxVal": 1.2,
+    "Type": "SaturationDecorator"
+}

@@ -16,31 +16,14 @@ double Square::Symuluj(int t)
 		: -amplitude;
 }
 
-void Square::Serialize(const std::string& path) const
+nlohmann::json Square::Serialize() const
 {
-	nlohmann::json json;
-	json["Type"] = "Square";
-	json["Amplitude"] = this->amplitude;
-	json["Frequency"] = this->frequency;
-	json["Fill"] = this->fill;
-
-	std::ofstream file(path);
-	if (!file) throw std::runtime_error("Nie mo¿na otworzyæ pliku do zapisu");
-	file << json.dump(4);
-	file.close();
+	return { {"Type", "Square"}, {"Amplitude", amplitude}, {"Frequency", frequency}, {"Fill", fill } };
 }
 
-void Square::Deserialize(const std::string& path)
+void Square::Deserialize(const nlohmann::json& json)
 {
-	std::ifstream file(path);
-	if (!file) throw std::runtime_error("Nie mo¿na otworzyæ pliku do odczytu");
-
-	nlohmann::json json;
-	file >> json;
-	if (json["Type"] != "Square")
-		throw std::runtime_error("Nieprawid³owy typ sygna³u");
-	this->amplitude = json["Amplitude"].get<double>();
-	this->frequency = json["Frequency"].get<double>();
-	this->fill = json["Fill"].get<double>();
-	file.close();
+	amplitude = json.at("Amplitude").get<double>();
+	frequency = json.at("Frequency").get<double>();
+	fill = json.at("Fill").get<double>();
 }

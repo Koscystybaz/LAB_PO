@@ -1,16 +1,21 @@
 #pragma once
 #include <random>
 #include "Signal.h"
-#include "ISerializable.h"
 
 /**
  * @brief Klasa reprezentujaca sygnal bialego szumu
  * Klasa dziedziczy po klasie Signal i implementuje metode Symuluj,
  * ktora zwraca wartosc sygnalu bialego szumu w danym czasie t.
  */
-class WhiteNoise : public Signal, public ISerializable
+class WhiteNoise : public Signal
 {
 public:
+
+	/**
+	 * @brief Konstruktor domyœlny klasy WhiteNoise
+	 */
+	WhiteNoise() = default;
+
 	/**
 	 * @brief Konstruktor klasy WhiteNoise
 	 * @param amplitude Amplituda sygnalu bialego szumu
@@ -25,16 +30,16 @@ public:
     double Symuluj(int t) override;
 
 	/**
-	 * @brief Funkcja serializuj¹ca obiekt do pliku JSON
-	 * @param path Œcie¿ka do pliku, do którego zostan¹ zapisane dane obiektu
-	 */
-	void Serialize(const std::string& path) const override;
+	* @brief Funkcja serializuj¹ca obiekt do pliku
+	* @return Zwraca obiekt JSON reprezentuj¹cy stan obiektu
+	*/
+	nlohmann::json Serialize() const override;
 
 	/**
-	 * @brief Funkcja deserializuj¹ca obiekt z pliku JSON
-	 * @param path Œcie¿ka do pliku, z którego zostan¹ odczytane dane obiektu
-	 */
-	void  Deserialize(const std::string& path) override;
+	* @brief Funkcja deserializuj¹ca obiekt z pliku
+	* @param json Obiekt JSON zawieraj¹cy dane do deserializacji
+	*/
+	void Deserialize(const nlohmann::json& json) override;
 
 private:
     double amplitude;

@@ -1,15 +1,18 @@
 #pragma once
 #include "Signal.h"
-#include "ISerializable.h"
+
 
 /**
  * @brief Klasa reprezentuj¹ca sta³y sygna³
  * Klasa ta dziedziczy po klasie Signal i implementuje funkcjê Symuluj,
  * która zwraca sta³¹ wartoœæ niezale¿nie od czasu.
  */
-class Constant : public Signal, public ISerializable
+class Constant : public Signal
 {
 public:
+
+	Constant() = default;
+
 	/**
 	 * @brief Konstruktor klasy Constant
 	 * @param value Wartoœæ sta³ego sygna³u
@@ -25,15 +28,15 @@ public:
 
 	/**
 	* @brief Funkcja serializuj¹ca obiekt do pliku
-	* @param path Œcie¿ka do pliku, do którego zostanie zapisany obiekt
+	* @return Zwraca obiekt JSON reprezentuj¹cy stan obiektu
 	*/
-	void Serialize(const std::string& path) const override;
+	nlohmann::json Serialize() const override;
 
 	/**
 	* @brief Funkcja deserializuj¹ca obiekt z pliku
-	* @param data Œcie¿ka do pliku, z którego zostanie odczytany obiekt
+	* @param json Obiekt JSON zawieraj¹cy dane do deserializacji
 	*/
-	void Deserialize(const std::string& data) override;
+	void Deserialize(const nlohmann::json& json) override;
 
 private:
     double value;

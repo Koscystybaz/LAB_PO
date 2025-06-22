@@ -17,11 +17,11 @@ public:
 	* @brief Metoda do serializacji obiektu do formatu tekstowego.
 	* @param path Œcie¿ka do pliku, do którego ma zostaæ zapisany obiekt.
     */
-    virtual void Serialize(const std::string& path) const = 0;
+    virtual nlohmann::json Serialize() const = 0;
 
 	/**
 	* @brief Metoda do deserializacji obiektu z formatu tekstowego.
 	* @param path Œcie¿ka do pliku, z którego ma zostaæ odczytany obiekt.
 	*/
-    virtual void Deserialize(const std::string& path) = 0;
+    virtual void Deserialize(const nlohmann::json& json) = 0;
 };

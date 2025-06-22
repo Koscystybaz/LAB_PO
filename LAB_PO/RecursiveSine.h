@@ -2,7 +2,7 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include "Signal.h"
-#include "ISerializable.h"
+
 
 /**
 * @brief Klasa reprezentuj¹ca sygna³ sinusoidalny generowany rekurencyjnie
@@ -14,9 +14,14 @@
 * @param lastSample2 Przedostatnia próbka sygna³u (n-2)
 * @param firstIteration Flaga informuj¹ca, czy jest to pierwsza iteracja generowania sygna³u
 */
-class RecursiveSine : public Signal, public ISerializable
+class RecursiveSine : public Signal
 {
 public:
+
+	/**
+	* @brief Konstruktor domyœlny klasy RecursiveSine
+	*/
+	RecursiveSine() = default;
 
 	/**
 	* @brief Konstruktor klasy RecursiveSine
@@ -34,17 +39,17 @@ public:
     */
     double Symuluj(int t) override;
 
-    /**
-    * @brief Funkcja serializuj¹ca obiekt do pliku JSON
-    * @param path Œcie¿ka do pliku, do którego zostan¹ zapisane dane obiektu
-    */
-    void Serialise(const std::string& path) const;
+	/**
+	* @brief Funkcja serializuj¹ca obiekt do pliku
+	* @return Zwraca obiekt JSON reprezentuj¹cy stan obiektu
+	*/
+	nlohmann::json Serialize() const override;
 
-    /**
-     * @brief Funkcja deserializuj¹ca obiekt z pliku JSON
-     * @param path Œcie¿ka do pliku, z którego zostan¹ odczytane dane obiektu
-     */
-    void  Deserialise(const std::string& path);
+	/**
+	* @brief Funkcja deserializuj¹ca obiekt z pliku
+	* @param json Obiekt JSON zawieraj¹cy dane do deserializacji
+	*/
+	void Deserialize(const nlohmann::json& json) override;
 
 private:
     double amplitude;

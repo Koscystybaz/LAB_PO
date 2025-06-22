@@ -21,29 +21,13 @@ double Triangle::Symuluj(int t)
     }
 }
 
-void Triangle::Serialise(const std::string& path) const
+nlohmann::json Triangle::Serialize() const
 {
-	nlohmann::json json;
-	json["Type"] = "Triangle";
-	json["Amplitude"] = this->amplitude;
-	json["Frequency"] = this->frequency;
-
-	std::ofstream file(path);
-	if (!file) throw std::runtime_error("Nie mo¿na otworzyæ pliku do zapisu");
-	file << json.dump(4);
-	file.close();
+	return { {"Type", "Triangle"}, {"Amplitude", this->amplitude}, {"Frequency", this->frequency} };
 }
 
-void Triangle::Deserialise(const std::string& path)
+void Triangle::Deserialize(const nlohmann::json& json)
 {
-	std::ifstream file(path);
-	if (!file) throw std::runtime_error("Nie mo¿na otworzyæ pliku do odczytu");
-
-	nlohmann::json json;
-	file >> json;
-	if (json["Type"] != "Triangle")
-		throw std::runtime_error("Nieprawid³owy typ sygna³u");
-	this->amplitude = json["Amplitude"].get<double>();
-	this->frequency = json["Frequency"].get<double>();
-	file.close();
+	this->amplitude = json.at("Amplitude").get<double>();
+	this->frequency = json.at("Frequency").get<double>();
 }

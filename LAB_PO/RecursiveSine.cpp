@@ -26,35 +26,23 @@ double RecursiveSine::Symuluj(int t)
     return present;
 }
 
-void RecursiveSine::Serialise(const std::string& path) const
+nlohmann::json RecursiveSine::Serialize() const
 {
-    nlohmann::json json;
-    json["Type"] = "RecursiveSine";
-    json["Amplitude"] = amplitude;
-    json["Omega"] = omega;
-    json["LastSample1"] = lastSample1;
-    json["LastSample2"] = lastSample2;
-    json["FirstIteration"] = firstIteration;
-
-    std::ofstream file(path);
-    if (!file) throw std::runtime_error("Nie mo¿na otworzyæ pliku do zapisu");
-    file << json.dump(4);
-    file.close();
+	return {
+		{"Type", "RecursiveSine"},
+		{"Amplitude", amplitude},
+		{"Omega", omega},
+		{"LastSample1", lastSample1},
+		{"LastSample2", lastSample2},
+		{"FirstIteration", firstIteration}
+	};
 }
 
-void RecursiveSine::Deserialise(const std::string& path)
+void RecursiveSine::Deserialize(const nlohmann::json& json)
 {
-    std::ifstream file(path);
-    if (!file) throw std::runtime_error("Nie mo¿na otworzyæ pliku do odczytu");
-
-    nlohmann::json json;
-    file >> json;
-    if (json["Type"] != "RecursiveSine")
-        throw std::runtime_error("Nieprawid³owy typ sygna³u");
-    amplitude = json["Amplitude"].get<double>();
-    omega = json["Omega"].get<double>();
-    lastSample1 = json["LastSample1"].get<double>();
-    lastSample2 = json["LastSample2"].get<double>();
-    firstIteration = json["FirstIteration"].get<bool>();
-    file.close();
+	amplitude = json.at("Amplitude").get<double>();
+	omega = json.at("Omega").get<double>();
+	lastSample1 = json.at("LastSample1").get<double>();
+	lastSample2 = json.at("LastSample2").get<double>();
+	firstIteration = json.at("FirstIteration").get<bool>();
 }
