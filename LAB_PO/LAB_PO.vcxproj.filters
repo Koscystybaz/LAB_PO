@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Generator">
+      <UniqueIdentifier>{2fd21e0a-138f-449d-95a6-0e1652e639ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Decorator">
+      <UniqueIdentifier>{676ce48c-7794-4d79-9083-4f95ed3c8cd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Decorator">
+      <UniqueIdentifier>{fcfe6f58-0157-43a0-859b-782495c2eaed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Generator">
+      <UniqueIdentifier>{6c426d7b-1c02-4726-b061-4a1b2eb7633b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ModelARX.h">
@@ -21,13 +33,88 @@
     <ClInclude Include="ObiektSISO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PetlaSprzerzeniaZwrotnego.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RegulatorPID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Constant.h">
+      <Filter>Header Files\Generator</Filter>
+    </ClInclude>
+    <ClInclude Include="WhiteNoise.h">
+      <Filter>Header Files\Generator</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Header Files\Generator</Filter>
+    </ClInclude>
+    <ClInclude Include="Square.h">
+      <Filter>Header Files\Generator</Filter>
+    </ClInclude>
+    <ClInclude Include="Sine.h">
+      <Filter>Header Files\Generator</Filter>
+    </ClInclude>
+    <ClInclude Include="Signal.h">
+      <Filter>Header Files\Generator</Filter>
+    </ClInclude>
+    <ClInclude Include="Decorator.h">
+      <Filter>Header Files\Decorator</Filter>
+    </ClInclude>
+    <ClInclude Include="AddDecorator.h">
+      <Filter>Header Files\Decorator</Filter>
+    </ClInclude>
+    <ClInclude Include="SaturationDecorator.h">
+      <Filter>Header Files\Decorator</Filter>
+    </ClInclude>
+    <ClInclude Include="RecursiveSine.h">
+      <Filter>Header Files\Generator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModelARX.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="ISerializable.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lab1.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lab3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PetlaSprzerzeniaZwrotnego.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegulatorPID.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lab2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SaturationDecorator.cpp">
+      <Filter>Source Files\Decorator</Filter>
+    </ClCompile>
+    <ClCompile Include="AddDecorator.cpp">
+      <Filter>Source Files\Decorator</Filter>
+    </ClCompile>
+    <ClCompile Include="Constant.cpp">
+      <Filter>Source Files\Generator</Filter>
+    </ClCompile>
+    <ClCompile Include="Sine.cpp">
+      <Filter>Source Files\Generator</Filter>
+    </ClCompile>
+    <ClCompile Include="Square.cpp">
+      <Filter>Source Files\Generator</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Source Files\Generator</Filter>
+    </ClCompile>
+    <ClCompile Include="WhiteNoise.cpp">
+      <Filter>Source Files\Generator</Filter>
+    </ClCompile>
+    <ClCompile Include="RecursiveSine.cpp">
+      <Filter>Source Files\Generator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

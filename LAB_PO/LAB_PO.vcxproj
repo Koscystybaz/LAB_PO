@@ -76,6 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -90,6 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -104,6 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -118,6 +121,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,17 +131,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AddDecorator.h" />
+    <ClInclude Include="Constant.h" />
+    <ClInclude Include="Decorator.h" />
     <ClInclude Include="ModelARX.h" />
     <ClInclude Include="ObiektSISO.h" />
     <ClInclude Include="PetlaSprzerzeniaZwrotnego.h" />
+    <ClInclude Include="RecursiveSine.h" />
     <ClInclude Include="RegulatorPID.h" />
+    <ClInclude Include="SaturationDecorator.h" />
+    <ClInclude Include="Signal.h" />
+    <ClInclude Include="Sine.h" />
+    <ClInclude Include="Square.h" />
+    <ClInclude Include="Triangle.h" />
+    <ClInclude Include="WhiteNoise.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddDecorator.cpp" />
+    <ClCompile Include="ISerializable.h" />
     <ClCompile Include="lab1.cpp" />
+    <ClCompile Include="lab3.cpp" />
     <ClCompile Include="ModelARX.cpp" />
     <ClCompile Include="PetlaSprzerzeniaZwrotnego.cpp" />
+    <ClCompile Include="RecursiveSine.cpp" />
     <ClCompile Include="RegulatorPID.cpp" />
     <ClCompile Include="lab2.cpp" />
+    <ClCompile Include="Constant.cpp" />
+    <ClCompile Include="SaturationDecorator.cpp" />
+    <ClCompile Include="Sine.cpp" />
+    <ClCompile Include="Square.cpp" />
+    <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="WhiteNoise.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Model.json" />
