@@ -2,30 +2,35 @@
 #include "Signal.h"
 
 /**
- * @brief Definicja klasy Square
- * Klasa ta reprezentuje sygna³ prostok¹tny dziedzicz¹ca po klasie Signal.
- * Zawiera implementacjê funkcji Symuluj, która oblicza wartoœæ sygna³u prostok¹tnego w danym czasie.
- */
+* @Author Jakub Dudek
+* @Class Square
+* @brief Definicja klasy Square
+* Klasa ta reprezentuje sygna³ prostok¹tny dziedzicz¹ca po klasie Signal.
+* Zawiera implementacjê funkcji Symuluj, która oblicza wartoœæ sygna³u prostok¹tnego w danym czasie.
+* @param amplitude Amplituda sygna³u prostok¹tnego
+* @param frequency Czêstotliwoœæ sygna³u prostok¹tnego
+* @param fill Wype³nienie sygna³u prostok¹tnego
+*/
 class Square : public Signal
 {
 public:
 
 	/**
-	 * @brief Konstruktor domyœlny klasy Square
-	 */
+	* @brief Konstruktor domyœlny klasy Square
+	*/
 	Square() = default;
 
 	/**
-	 * @brief Konstruktor klasy Square
-	 * @param amplitude Amplituda sygna³u prostok¹tnego
-	 * @param frequency Czêstotliwoœæ sygna³u prostok¹tnego
-	 */
+	* @brief Konstruktor klasy Square
+	* @param amplitude Amplituda sygna³u prostok¹tnego
+	* @param frequency Czêstotliwoœæ sygna³u prostok¹tnego
+	*/
 	Square(double amplitude, double frequency, double fill);
 	/**
-	 * @brief Funkcja symuluj¹ca sygna³ prostok¹tny
-	 * @param t Czas, dla którego ma zostaæ obliczona wartoœæ sygna³u
-	 * @return Wartoœæ sygna³u prostok¹tnego w danym czasie
-	 */
+	* @brief Funkcja symuluj¹ca sygna³ prostok¹tny
+	* @param t Czas, dla którego ma zostaæ obliczona wartoœæ sygna³u
+	* @return Wartoœæ sygna³u prostok¹tnego w danym czasie
+	*/
 	double Symuluj(int t) override;
 
 	/**

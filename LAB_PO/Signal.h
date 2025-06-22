@@ -2,16 +2,19 @@
 #include "ISerializable.h"
 
 /**
- * @brief Klasa reprezentuj¹ca sygna³
- * Klasa ta jest abstrakcyjn¹ klas¹ bazow¹ dla ró¿nych typów sygna³ów.
- * Zawiera wirtualn¹ funkcjê `Symuluj`, która musi byæ zaimplementowana w klasach pochodnych.
+* @Author Jakub Dudek
+* @Class Signal
+* @brief Klasa reprezentuj¹ca sygna³
+* Klasa ta jest abstrakcyjn¹ klas¹ bazow¹ dla ró¿nych typów sygna³ów.
+* Zawiera wirtualn¹ funkcjê `Symuluj`, która musi byæ zaimplementowana w klasach pochodnych.
 */
 class Signal : public ISerializable
 {
 public:
+
 	/**
-	 * @brief Wirtualny destruktor
-	 */
+	* @brief Wirtualny destruktor
+	*/
     virtual ~Signal() = default;
 
 	/**

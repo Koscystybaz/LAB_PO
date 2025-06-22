@@ -3,23 +3,28 @@
 #include "Signal.h"
 
 /**
- * @brief Klasa reprezentujaca sygnal bialego szumu
- * Klasa dziedziczy po klasie Signal i implementuje metode Symuluj,
- * ktora zwraca wartosc sygnalu bialego szumu w danym czasie t.
- */
+* @Author Jakub Dudek
+* @Class WhiteNoise
+* @brief Klasa reprezentujaca sygnal bialego szumu
+* Klasa dziedziczy po klasie Signal i implementuje metode Symuluj,
+* ktora zwraca wartosc sygnalu bialego szumu w danym czasie t.
+* @param amplitude Amplituda sygnalu bialego szumu
+* @param generator Generator liczb losowych
+* @param distribution Rozklad normalny do generowania wartosci szumu
+*/
 class WhiteNoise : public Signal
 {
 public:
 
 	/**
-	 * @brief Konstruktor domyœlny klasy WhiteNoise
-	 */
+	* @brief Konstruktor domyœlny klasy WhiteNoise
+	*/
 	WhiteNoise() = default;
 
 	/**
-	 * @brief Konstruktor klasy WhiteNoise
-	 * @param amplitude Amplituda sygnalu bialego szumu
-	 */
+	* @brief Konstruktor klasy WhiteNoise
+	* @param amplitude Amplituda sygnalu bialego szumu
+	*/
     WhiteNoise(double amplitude);
 
 	/**

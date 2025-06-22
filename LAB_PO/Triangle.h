@@ -2,6 +2,8 @@
 #include "Signal.h"
 
 /**
+* @Author Jakub Dudek
+* @Class Triangle
 * @brief Klasa reprezentujaca sygnal trojkatny
 * Klasa dziedziczy po klasie Signal i implementuje metode Symuluj,
 * ktora zwraca wartosc sygnalu trojkatnego w danym czasie t.

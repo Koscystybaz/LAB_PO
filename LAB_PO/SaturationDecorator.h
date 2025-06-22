@@ -5,14 +5,15 @@
 #include "Decorator.h"
 
 /**
+* @Author Jakub Dudek
+* @Class SaturationDecorator
 * @brief Klasa dekoratora sygna³u, który ogranicza wartoœæ sygna³u do maksymalnej wartoœci.
 * Klasa ta dziedziczy po klasie Decorator i implementuje metodê Symuluj,
 * która zwraca wartoœæ sygna³u ograniczon¹ do maksymalnej wartoœci.
+* @param maxVal Maksymalna wartoœæ, do której sygna³ bêdzie ograniczany.
 */
-class SaturationDecorator : public Decorator {
-private:
-    double maxVal;
-
+class SaturationDecorator : public Decorator 
+{
 public:
 
     /**
@@ -45,4 +46,6 @@ public:
 	* @param json Obiekt JSON zawieraj¹cy dane do deserializacji
 	*/
 	void Deserialize(const nlohmann::json& json) override;
+private:
+	double maxVal;
 };

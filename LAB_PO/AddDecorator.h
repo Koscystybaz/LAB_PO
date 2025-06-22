@@ -3,9 +3,12 @@
 
 
 /**
+* @Author Jakub Dudek
+* @Class AddDecorator
 * @brief Klasa dekoratora sygna³u, który dodaje wartoœæ drugiego sygna³u do pierwszego.
 * Klasa ta dziedziczy po klasie Decorator i implementuje metodê Symuluj,
 * która zwraca sumê wartoœci obu sygna³ów.
+* @param secondSignal WskaŸnik do drugiego sygna³u, który bêdzie dodawany do pierwszego sygna³u.
 */
 class AddDecorator : public Decorator 
 {

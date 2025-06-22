@@ -4,30 +4,34 @@
 #include "Signal.h"
 
 /**
- * @brief Klasa ta reprezentuje sygna³ sinusoidalny dziedzicz¹ca po klasie Signal.
- * Zawiera implementacjê funkcji Symuluj, która oblicza wartoœæ sygna³u sinusoidalnego w danym czasie.
- */
+* @Author Jakub Dudek
+* @Class Sine
+* @brief Klasa ta reprezentuje sygna³ sinusoidalny dziedzicz¹ca po klasie Signal.
+* Zawiera implementacjê funkcji Symuluj, która oblicza wartoœæ sygna³u sinusoidalnego w danym czasie.
+* @param amplitude Amplituda fali sinusoidalnej
+* @param frequency Czêstotliwoœæ fali sinusoidalnej
+*/
 class Sine : public Signal
 {
 public:
 
 	/**
-	 * @brief Konstruktor domyœlny klasy Sine
-	 */
+	* @brief Konstruktor domyœlny klasy Sine
+	*/
 	Sine() = default;
 
 	/**
-	 * @brief Konstruktor klasy Sine
-	 * @param amplitude Amplituda fali sinusoidalnej
-	 * @param frequency Czêstotliwoœæ fali sinusoidalnej
-	 */
+	* @brief Konstruktor klasy Sine
+	* @param amplitude Amplituda fali sinusoidalnej
+	* @param frequency Czêstotliwoœæ fali sinusoidalnej
+	*/
 	Sine(double amplitude, double frequency);
 
 	/**
-	 * @brief Funkcja symuluj¹ca sygna³ sinusoidalny
-	 * @param t Czas, dla którego ma zostaæ obliczona wartoœæ sygna³u
-	 * @return Wartoœæ sygna³u sinusoidalnego w danym czasie
-	 */
+	* @brief Funkcja symuluj¹ca sygna³ sinusoidalny
+	* @param t Czas, dla którego ma zostaæ obliczona wartoœæ sygna³u
+	* @return Wartoœæ sygna³u sinusoidalnego w danym czasie
+	*/
 	double Symuluj(int t) override;
 
 	/**

@@ -3,27 +3,33 @@
 
 
 /**
- * @brief Klasa reprezentuj¹ca sta³y sygna³
- * Klasa ta dziedziczy po klasie Signal i implementuje funkcjê Symuluj,
- * która zwraca sta³¹ wartoœæ niezale¿nie od czasu.
- */
+* @Author Jakub Dudek
+* @Class Constant
+* @brief Klasa reprezentuj¹ca sta³y sygna³
+* Klasa ta dziedziczy po klasie Signal i implementuje funkcjê Symuluj,
+* która zwraca sta³¹ wartoœæ niezale¿nie od czasu.
+* @param value Wartoœæ sta³ego sygna³u
+*/
 class Constant : public Signal
 {
 public:
 
+	/**
+	* @brief Domyœlny konstruktor klasy Constant
+	*/
 	Constant() = default;
 
 	/**
-	 * @brief Konstruktor klasy Constant
-	 * @param value Wartoœæ sta³ego sygna³u
-	 */
+	* @brief Konstruktor klasy Constant
+	* @param value Wartoœæ sta³ego sygna³u
+	*/
     Constant(double value);
 
 	/**
-	 * @brief Funkcja symuluj¹ca sta³y sygna³
-	 * @param t Czas, dla którego ma zostaæ obliczona wartoœæ sygna³u
-	 * @return Zwraca sta³¹ wartoœæ niezale¿nie od czasu
-	 */
+	* @brief Funkcja symuluj¹ca sta³y sygna³
+	* @param t Czas, dla którego ma zostaæ obliczona wartoœæ sygna³u
+	* @return Zwraca sta³¹ wartoœæ niezale¿nie od czasu
+	*/
     double Symuluj(int t) override;
 
 	/**

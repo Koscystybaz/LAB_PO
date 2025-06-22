@@ -5,6 +5,8 @@
 
 
 /**
+* @Author Jakub Dudek
+* @Class RecursiveSine
 * @brief Klasa reprezentuj¹ca sygna³ sinusoidalny generowany rekurencyjnie
 * @param amplitude Amplituda sygna³u
 * @param frequency Czêstotliwoœæ sygna³u
@@ -54,6 +56,7 @@ public:
 private:
     double amplitude;
     double omega; // 2*pi*f/fs
-    mutable double lastSample1, lastSample2; 
+	mutable double lastSample1; 
+	mutable double lastSample2;
     mutable bool firstIteration;
 };

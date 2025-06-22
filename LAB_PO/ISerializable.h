@@ -4,6 +4,8 @@
 #include <nlohmann/json.hpp>
 
 /**
+* @Author Jakub Dudek
+* @Class ISerializable
 * @brief Interfejs do serializacji obiektów.
 */
 class ISerializable {
