@@ -1,0 +1,38 @@
+{
+    "Close": true,
+    "Components": [
+        {
+            "K": 0.5,
+            "LastError": 0.775,
+            "SumOfErrors": 4.325,
+            "Td": 0.01,
+            "Ti": 0.1,
+            "Type": "RegulatorPID"
+        },
+        {
+            "MaxX": 1.0,
+            "MinX": -1.0,
+            "Type": "ObiektStatyczny"
+        },
+        {
+            "A": [
+                0.5
+            ],
+            "B": [
+                0.3
+            ],
+            "IN": [
+                1.0,
+                1.0
+            ],
+            "K": 1,
+            "NOISE": 0.0,
+            "OUT": [
+                0.1875
+            ],
+            "Type": "ModelARX"
+        }
+    ],
+    "PreviousY": 0.1875,
+    "Type": "PetlaUAR"
+}

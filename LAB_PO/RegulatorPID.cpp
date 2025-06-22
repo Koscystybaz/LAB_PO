@@ -61,3 +61,24 @@ void RegulatorPID::setPID(double p, double i, double d)
 	this->Td = d;
 	ValidateParameters();
 }
+
+nlohmann::json RegulatorPID::Serialize() const
+{
+	return {
+	   {"Type", "RegulatorPID"},
+	   {"K", k},
+	   {"Ti", Ti},
+	   {"Td", Td},
+	   {"SumOfErrors", sumOfErrors},
+	   {"LastError", lastError}
+	};
+}
+
+void RegulatorPID::Deserialize(const nlohmann::json& json)
+{
+	k = json.at("K").get<double>();
+	Ti = json.at("Ti").get<double>();
+	Td = json.at("Td").get<double>();
+	sumOfErrors = json.at("SumOfErrors").get<double>();
+	lastError = json.at("LastError").get<double>();
+} 

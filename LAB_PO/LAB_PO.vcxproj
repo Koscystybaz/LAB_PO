@@ -133,39 +133,51 @@
   <ItemGroup>
     <ClInclude Include="AddDecorator.h" />
     <ClInclude Include="Constant.h" />
+    <ClInclude Include="ModelFactory.h" />
     <ClInclude Include="Decorator.h" />
     <ClInclude Include="ModelARX.h" />
     <ClInclude Include="ObiektSISO.h" />
     <ClInclude Include="PetlaSprzerzeniaZwrotnego.h" />
+    <ClInclude Include="PetlaUAR.h" />
     <ClInclude Include="RecursiveSine.h" />
+    <ClInclude Include="RegulatorFactory.h" />
     <ClInclude Include="RegulatorPID.h" />
     <ClInclude Include="SaturationDecorator.h" />
     <ClInclude Include="Signal.h" />
     <ClInclude Include="SignalFactory.h" />
     <ClInclude Include="Sine.h" />
+    <ClInclude Include="SISOFactory.h" />
     <ClInclude Include="Square.h" />
+    <ClInclude Include="ObiektStatyczny.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="WhiteNoise.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddDecorator.cpp" />
+    <ClCompile Include="lab4.cpp" />
+    <ClCompile Include="ModelFactory.cpp" />
     <ClCompile Include="ISerializable.h" />
     <ClCompile Include="lab1.cpp" />
     <ClCompile Include="lab3.cpp" />
     <ClCompile Include="ModelARX.cpp" />
     <ClCompile Include="PetlaSprzerzeniaZwrotnego.cpp" />
+    <ClCompile Include="PetlaUAR.cpp" />
     <ClCompile Include="RecursiveSine.cpp" />
+    <ClCompile Include="RegulatorFactory.cpp" />
     <ClCompile Include="RegulatorPID.cpp" />
     <ClCompile Include="lab2.cpp" />
     <ClCompile Include="Constant.cpp" />
     <ClCompile Include="SaturationDecorator.cpp" />
     <ClCompile Include="SignalFactory.cpp" />
     <ClCompile Include="Sine.cpp" />
+    <ClCompile Include="SISOFactory.cpp" />
     <ClCompile Include="Square.cpp" />
+    <ClCompile Include="ObiektStatyczny.cpp" />
     <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="WhiteNoise.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="generator.json" />
     <None Include="Model.json" />
     <None Include="Model2.json" />
     <None Include="packages.config" />

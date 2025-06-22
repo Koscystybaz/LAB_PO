@@ -28,15 +28,9 @@ public:
 	ModelARX(std::vector<double> a, std::vector<double> b, unsigned int k, double noise);
 
 	/**
-	* @brief Konstruktor klasy ModelARX przyjmuj¹cy œcie¿kê do pliku JSON z danymi modelu
-	* @param path Œcie¿ka do pliku JSON z danymi modelu
+	* @brief Domyœlny konstruktor klasy ModelARX
 	*/
-	ModelARX(const std::string& path);
-
-	/**
-	* @brief Destruktor klasy ModelARX
-	*/
-	~ModelARX();
+	ModelARX() = default;
 
 	/**
 	* @brief Funkcja symuluj¹ca model ARX
@@ -46,17 +40,16 @@ public:
 	double Symuluj(double input) override;
 
 	/**
-	* @brief Funkcja serializuj¹ca model ARX do pliku JSON
-	* @param path Œcie¿ka do pliku JSON, do którego zostan¹ zapisane dane modelu
+	* @brief Funkcja serializuj¹ca obiekt do pliku
+	* @return Zwraca obiekt JSON reprezentuj¹cy stan obiektu
 	*/
-	void Serialise(const std::string& path) const;
+	nlohmann::json Serialize() const override;
 
 	/**
-	* @brief Funkcja deserializuj¹ca model ARX z pliku JSON
-	* @param path Œcie¿ka do pliku JSON, z którego zostan¹ odczytane dane modelu
-	* @return Obiekt modelu ARX
+	* @brief Funkcja deserializuj¹ca obiekt z pliku
+	* @param json Obiekt JSON zawieraj¹cy dane do deserializacji
 	*/
-	ModelARX Deserialise(const std::string& path);
+	void Deserialize(const nlohmann::json& json) override;
 
 	/**
 	* @brief Funkcja zwracaj¹ca ostatni¹ wartoœæ wejœciow¹

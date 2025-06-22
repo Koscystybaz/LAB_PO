@@ -1,4 +1,6 @@
 #pragma once
+#include <nlohmann/json.hpp>
+
 /**
 * @author: Jakub Dudek
 * @class ObiektSISO
@@ -18,4 +20,16 @@ public:
 	* @return Wygenerowana wartoœæ wyjœciowa na podstawie wartoœci wejœciowej
 	*/
 	virtual double Symuluj(double input) = 0;
+
+	/**
+	* @brief Funkcja serializuj¹ca obiekt do pliku
+	* @return Zwraca obiekt JSON reprezentuj¹cy stan obiektu
+	*/
+	virtual nlohmann::json Serialize() const = 0;
+
+	/**
+	* @brief Funkcja deserializuj¹ca obiekt z pliku
+	* @param json Obiekt JSON zawieraj¹cy dane do deserializacji
+	*/
+	virtual void Deserialize(const nlohmann::json& json) = 0;
 };

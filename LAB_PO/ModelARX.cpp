@@ -10,18 +10,6 @@ ModelARX::ModelARX(std::vector<double> a, std::vector<double> b, unsigned int k,
 	out.resize(a.size(), 0.0);
 }
 
-ModelARX::ModelARX(const std::string& path)
-{
-	this->Deserialise(path);
-	in.resize(b.size() + k, 0.0);
-	out.resize(a.size(), 0.0);
-}
-
-ModelARX::~ModelARX()
-{
-	// Destruktor nie wymaga dodatkowych dzia³añ
-}
-
 double ModelARX::Symuluj(double input)
 {
 	this->in.push_front(input);
@@ -37,33 +25,33 @@ double ModelARX::Symuluj(double input)
 	return output;
 }
 
-void ModelARX::Serialise(const std::string& path) const
+nlohmann::json ModelARX::Serialize() const
 {
-	nlohmann::json json;
-	json["A"] = this->a;
-	json["B"] = this->b;
-	json["K"] = this->k;
-	json["NOISE"] = this->noise;
-
-	std::ofstream file(path);
-	if (!file) throw std::runtime_error("Nie mo¿na otworzyæ pliku do zapisu");
-	file << json.dump(4);
+	return 
+	{
+		{"Type", "ModelARX"},
+		{"A", a},
+		{"B", b},
+		{"K", k},
+		{"NOISE", noise},
+		{"IN", std::vector<double>(in.begin(), in.end())},
+		{"OUT", std::vector<double>(out.begin(), out.end())}
+	};
 }
 
-ModelARX ModelARX::Deserialise(const std::string& path)
+void ModelARX::Deserialize(const nlohmann::json& json)
 {
-	std::ifstream file(path);
-	if (!file) throw std::runtime_error("Nie mo¿na otworzyæ pliku do odczytu: " + path);
+	a = json.at("A").get<std::vector<double>>();
+	b = json.at("B").get<std::vector<double>>();
+	k = json.at("K").get<unsigned int>();
+	noise = json.at("NOISE").get<double>();
 
-	nlohmann::json json;
-	file >> json;
+    auto in_vec = json.at("IN").get<std::vector<double>>();
+	in = std::deque<double>(in_vec.begin(), in_vec.end());
 
-	std::vector<double> a = json["A"].get<std::vector<double>>();
-	std::vector<double> b = json["B"].get<std::vector<double>>();
-	unsigned int k = json["K"].get<unsigned int>();
-	double noise = json["NOISE"].get<double>();
+	auto out_vec = json.at("OUT").get<std::vector<double>>();
+	out = std::deque<double>(out_vec.begin(), out_vec.end());
 
-	return ModelARX(a, b, k, noise);
 }
 
 double ModelARX::GetLastInput() const

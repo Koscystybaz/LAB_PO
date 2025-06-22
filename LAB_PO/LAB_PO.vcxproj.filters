@@ -25,20 +25,23 @@
     <Filter Include="Source Files\Generator">
       <UniqueIdentifier>{6c426d7b-1c02-4726-b061-4a1b2eb7633b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Factories">
+      <UniqueIdentifier>{cb7c4c45-5cc2-472b-a064-6faf9cf30628}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\mains">
+      <UniqueIdentifier>{29dc6d61-ff8a-4330-ad3e-056270035f2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Factories">
+      <UniqueIdentifier>{4e15fd86-3585-4dae-b071-afb188d535f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models">
+      <UniqueIdentifier>{8ded1d13-744c-4db0-bbf7-4cd58d8aad01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models">
+      <UniqueIdentifier>{ae0cecfe-554a-49dd-b8e9-3289468eab53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ModelARX.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ObiektSISO.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PetlaSprzerzeniaZwrotnego.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RegulatorPID.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Constant.h">
       <Filter>Header Files\Generator</Filter>
     </ClInclude>
@@ -69,31 +72,40 @@
     <ClInclude Include="RecursiveSine.h">
       <Filter>Header Files\Generator</Filter>
     </ClInclude>
+    <ClInclude Include="SISOFactory.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="RegulatorFactory.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelFactory.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelARX.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="ObiektSISO.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="ObiektStatyczny.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="PetlaSprzerzeniaZwrotnego.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="PetlaUAR.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="RegulatorPID.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
     <ClInclude Include="SignalFactory.h">
-      <Filter>Header Files\Generator</Filter>
+      <Filter>Header Files\Factories</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ModelARX.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ISerializable.h">
       <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lab1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lab3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PetlaSprzerzeniaZwrotnego.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RegulatorPID.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lab2.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SaturationDecorator.cpp">
       <Filter>Source Files\Decorator</Filter>
@@ -122,6 +134,42 @@
     <ClCompile Include="SignalFactory.cpp">
       <Filter>Source Files\Generator</Filter>
     </ClCompile>
+    <ClCompile Include="ModelFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="SISOFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="RegulatorFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="lab1.cpp">
+      <Filter>Source Files\mains</Filter>
+    </ClCompile>
+    <ClCompile Include="lab2.cpp">
+      <Filter>Source Files\mains</Filter>
+    </ClCompile>
+    <ClCompile Include="lab3.cpp">
+      <Filter>Source Files\mains</Filter>
+    </ClCompile>
+    <ClCompile Include="lab4.cpp">
+      <Filter>Source Files\mains</Filter>
+    </ClCompile>
+    <ClCompile Include="RegulatorPID.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="PetlaUAR.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="PetlaSprzerzeniaZwrotnego.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="ObiektStatyczny.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelARX.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -131,5 +179,6 @@
     <None Include="Model2.json">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="generator.json" />
   </ItemGroup>
 </Project>

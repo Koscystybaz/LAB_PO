@@ -15,6 +15,11 @@ class RegulatorPID : public ObiektSISO
 {
 public:
 	/**
+	* @brief Domyœlny konstruktor klasy RegulatorPID
+	*/
+	RegulatorPID() = default;
+
+	/**
 	* @brief Konstruktor klasy RegulatorPID z 1 parametrem
 	* @param k Wzmocnienie regulatora
 	*/
@@ -67,6 +72,18 @@ public:
 	* @param d Czas ró¿niczkowania
 	*/
 	void setPID(double p, double i, double d);
+
+	/**
+	* @brief Funkcja serializuj¹ca obiekt do pliku
+	* @return Zwraca obiekt JSON reprezentuj¹cy stan obiektu
+	*/
+	nlohmann::json Serialize() const override;
+
+	/**
+	* @brief Funkcja deserializuj¹ca obiekt z pliku
+	* @param json Obiekt JSON zawieraj¹cy dane do deserializacji
+	*/
+	void Deserialize(const nlohmann::json& json) override;
 
 private:
 	double k = 0.0;
