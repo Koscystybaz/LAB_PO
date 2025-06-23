@@ -131,9 +131,6 @@
     <ClCompile Include="RecursiveSine.cpp">
       <Filter>Source Files\Generator</Filter>
     </ClCompile>
-    <ClCompile Include="SignalFactory.cpp">
-      <Filter>Source Files\Generator</Filter>
-    </ClCompile>
     <ClCompile Include="ModelFactory.cpp">
       <Filter>Source Files\Factories</Filter>
     </ClCompile>
@@ -169,6 +166,15 @@
     </ClCompile>
     <ClCompile Include="ModelARX.cpp">
       <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="SignalFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

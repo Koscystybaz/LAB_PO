@@ -154,6 +154,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddDecorator.cpp" />
+    <ClCompile Include="Config.cpp" />
+    <ClCompile Include="Config.h" />
     <ClCompile Include="lab4.cpp" />
     <ClCompile Include="ModelFactory.cpp" />
     <ClCompile Include="ISerializable.h" />
