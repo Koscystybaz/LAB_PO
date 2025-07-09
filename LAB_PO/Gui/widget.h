@@ -1,30 +1,35 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#pragma once
 
 #include <QWidget>
-#include "PetlaUAR.h"
+#include <QLineEdit>
+#include <QPushButton>
+#include <QTextEdit>
+#include <QVBoxLayout>
+#include <QFormLayout>
 
-QT_BEGIN_NAMESPACE
-namespace Ui {
-class Widget;
-}
-QT_END_NAMESPACE
+#include "qcustomplot.h"
 
-class Widget : public QWidget
-{
+class Widget : public QWidget {
     Q_OBJECT
 
 public:
     Widget(QWidget *parent = nullptr);
-    ~Widget();
-
-private:
-    Ui::Widget *ui;
-    std::unique_ptr<PetlaUAR> loop;
 
 private slots:
-    void on_btnLoadConfig_clicked();
-    void on_btnSaveConfig_clicked();
-    void on_btnSimulate_clicked();
+    void onStartClicked();
+
+private:
+    QLineEdit* amplitudeEdit;
+    QLineEdit* freqEdit;
+    QLineEdit* fillEdit;
+    QLineEdit* kEdit;
+    QLineEdit* tiEdit;
+    QLineEdit* tdEdit;
+    QLineEdit* aEdit;
+    QLineEdit* bEdit;
+    QLineEdit* arxKEdit;
+    QLineEdit* noiseEdit;
+    QTextEdit* outputEdit;
+    QPushButton* startButton;
+    QCustomPlot* plotWidget;
 };
-#endif // WIDGET_H

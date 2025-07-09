@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.19)
 project(GUI LANGUAGES CXX)
 
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Widgets PrintSupport)
 
 qt_standard_project_setup()
 
@@ -41,6 +42,8 @@ qt_add_executable(GUI
     ../RegulatorFactory.cpp
     ../SignalFactory.cpp
     ../SISOFactory.cpp
+    qcustomplot.h
+    qcustomplot.cpp
 )
 
 include_directories(
@@ -53,6 +56,7 @@ target_link_libraries(GUI
         Qt::Core
         Qt::Widgets
         nlohmann_json::nlohmann_json
+        Qt::PrintSupport
 )
 
 include(GNUInstallDirs)

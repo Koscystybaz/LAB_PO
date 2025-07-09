@@ -157,6 +157,7 @@
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="Config.h" />
     <ClCompile Include="lab4.cpp" />
+    <ClCompile Include="lab5.cpp" />
     <ClCompile Include="ModelFactory.cpp" />
     <ClCompile Include="ISerializable.h" />
     <ClCompile Include="lab1.cpp" />

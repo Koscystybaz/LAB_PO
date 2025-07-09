@@ -1,68 +1,113 @@
 #include "widget.h"
-#include "ui_widget.h"
-#include <QFileDialog>
-#include <QMessageBox>
-#include <fstream>
-#include <nlohmann/json.hpp>
-
-std::unique_ptr<PetlaUAR> petla; // globalnie lub jako pole klasy Widget
+#include "Config.h"
+#include "PetlaUAR.h"
+#include "RegulatorPID.h"
+#include "ModelARX.h"
+#include "Square.h"
+#include <memory>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::Widget)
 {
-    ui->setupUi(this);
+    amplitudeEdit = new QLineEdit;
+    freqEdit = new QLineEdit;
+    fillEdit = new QLineEdit;
+    kEdit = new QLineEdit;
+    tiEdit = new QLineEdit;
+    tdEdit = new QLineEdit;
+    aEdit = new QLineEdit;
+    bEdit = new QLineEdit;
+    arxKEdit = new QLineEdit;
+    noiseEdit = new QLineEdit;
+    outputEdit = new QTextEdit;
+    outputEdit->setReadOnly(true);
+    outputEdit->setMaximumHeight(150);
+    startButton = new QPushButton("Start");
+    plotWidget = new QCustomPlot;
+    plotWidget->setMinimumHeight(150);
+
+    QFormLayout* formLayout = new QFormLayout;
+    formLayout->addRow("Amplituda sygnału:", amplitudeEdit);
+    formLayout->addRow("Częstotliwość sygnału:", freqEdit);
+    formLayout->addRow("Wypełnienie sygnału:", fillEdit);
+    formLayout->addRow("Wzmocnienie regulatora (k):", kEdit);
+    formLayout->addRow("Czas całkowania (Ti):", tiEdit);
+    formLayout->addRow("Czas różniczkowania (Td):", tdEdit);
+    formLayout->addRow("Współczynnik AR (a[0]):", aEdit);
+    formLayout->addRow("Współczynnik X (b[0]):", bEdit);
+    formLayout->addRow("Opóźnienie transportowe (arxK):", arxKEdit);
+    formLayout->addRow("Odchylenie standardowe szumu:", noiseEdit);
+
+    QVBoxLayout* mainLayout = new QVBoxLayout;
+    mainLayout->addLayout(formLayout);
+    mainLayout->addWidget(startButton);
+    mainLayout->addWidget(outputEdit);
+    mainLayout->addWidget(plotWidget);
+    mainLayout->addWidget(plotWidget, 1);
+
+    setLayout(mainLayout);
+
+    connect(startButton, &QPushButton::clicked, this, &Widget::onStartClicked);
 }
 
-Widget::~Widget()
+void Widget::onStartClicked()
 {
-    delete ui;
-}
+    double amplitude = amplitudeEdit->text().toDouble();
+    double freq = freqEdit->text().toDouble();
+    double fill = fillEdit->text().toDouble();
+    double k = kEdit->text().toDouble();
+    double Ti = tiEdit->text().toDouble();
+    double Td = tdEdit->text().toDouble();
+    double a0 = aEdit->text().toDouble();
+    double b0 = bEdit->text().toDouble();
+    unsigned int arxK = arxKEdit->text().toUInt();
+    double noise = noiseEdit->text().toDouble();
 
-void Widget::on_btnLoadConfig_clicked()
-{
-    QString filename = QFileDialog::getOpenFileName(this, "Wczytaj konfigurację", "", "Pliki JSON (*.json)");
-    if (filename.isEmpty()) return;
+    std::vector<double> a = { a0 };
+    std::vector<double> b = { b0 };
 
-    std::ifstream file(filename.toStdString());
-    if (!file) {
-        QMessageBox::warning(this, "Błąd", "Nie można otworzyć pliku!");
-        return;
+    Config config;
+    auto petla = std::make_unique<PetlaUAR>(true);
+    auto generator = std::make_unique<Square>(amplitude, freq, fill);
+
+    petla->AddComponent(std::make_unique<RegulatorPID>(k, Ti, Td));
+    petla->AddComponent(std::make_unique<ModelARX>(a, b, arxK, noise));
+
+    config.signalGenerator = std::move(generator);
+    config.loop = std::move(petla);
+
+    outputEdit->clear();
+    for (int t = 0; t < config.sampleNumber; ++t) {
+        double yzad = config.signalGenerator->Symuluj(t);
+        double y = config.loop->Symuluj(yzad);
+        outputEdit->append(QString("t=%1 yzad=%2 y=%3")
+                               .arg(t).arg(yzad).arg(y));
     }
-    nlohmann::json j;
-    file >> j;
-    loop = std::make_unique<PetlaUAR>();
-    loop->Deserialize(j);
-    QMessageBox::information(this, "OK", "Konfiguracja została wczytana.");
-}
 
-void Widget::on_btnSaveConfig_clicked()
-{
-    if (!loop) {
-        QMessageBox::warning(this, "Błąd", "Brak konfiguracji do zapisania!");
-        return;
+    QVector<double> tData, yzadData, yData;
+    for (int t = 0; t < config.sampleNumber; ++t) {
+        double yzad = config.signalGenerator->Symuluj(t);
+        double y = config.loop->Symuluj(yzad);
+        tData.append(t);
+        yzadData.append(yzad);
+        yData.append(y);
     }
-    QString filename = QFileDialog::getSaveFileName(this, "Zapisz konfigurację", "", "Pliki JSON (*.json)");
-    if (filename.isEmpty()) return;
 
-    nlohmann::json j = loop->Serialize();
-    std::ofstream file(filename.toStdString());
-    file << j.dump(4);
-    QMessageBox::information(this, "OK", "Konfiguracja została zapisana.");
-}
+    plotWidget->clearGraphs();
+    plotWidget->addGraph();
+    plotWidget->graph(0)->setData(tData, yzadData);
+    plotWidget->graph(0)->setName("yzad");
+    plotWidget->graph(0)->setPen(QPen(Qt::blue));
 
-void Widget::on_btnSimulate_clicked()
-{
-    QMessageBox::information(this, "Test", "Klik działa!");
-    if (!loop) {
-        QMessageBox::warning(this, "Błąd", "Brak konfiguracji!");
-        return;
-    }
-    int steps = ui->spinSteps ? ui->spinSteps->value() : 10; // domyślnie 10 kroków
-    QString results;
-    for (int t = 0; t < steps; ++t) {
-        double y = loop->Symuluj(1.0); // lub wartość z generatora
-        results += QString("t=%1  y=%2\n").arg(t).arg(y);
-    }
-    ui->textResults->setPlainText(results);
+    plotWidget->addGraph();
+    plotWidget->graph(1)->setData(tData, yData);
+    plotWidget->graph(1)->setName("y");
+    plotWidget->graph(1)->setPen(QPen(Qt::red));
+
+    plotWidget->xAxis->setLabel("t");
+    plotWidget->yAxis->setLabel("Wartość");
+    plotWidget->legend->setVisible(true);
+    plotWidget->rescaleAxes();
+    plotWidget->replot();
+
 }
